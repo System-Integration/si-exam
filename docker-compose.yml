@@ -19,11 +19,13 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./backend
+    volumes:
+      - ./backend/build/libs/backend-all-0.0.1.jar:/app/application.jar
   mom:
     image: rmohr/activemq
   database:
     image: mysql:8
     restart: always
     environment:
-      - MYSQL_DATABASE: "db"
-      - MYSQL_ROOT_PASSWORD: "test"
+      MYSQL_DATABASE: "db"
+      MYSQL_ROOT_PASSWORD: "test"
