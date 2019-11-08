@@ -8,5 +8,5 @@ Have Docker installed and gradle installed on your development machine
 ## Edit for server
 
 - 1. `sh cd backend && gradle fatJar -t`
-- 2. After changes to source code. Find your container id for the 'api' service -> `sh docker ps`
-- 3. At last run -> `sh docker restart {CONTAINER_ID}`
+- 2. Find your container id for the 'api' service -> `sh docker ps`. Remember this
+- 3. After changes to your backend source code. Run -> `sh docker restart {CONTAINER_ID}`
