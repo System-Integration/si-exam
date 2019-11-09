@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t oliverloenning/si-test-client -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t oliverloenning/si-test-frontend -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-  - docker run -e CI=true npm run test
+  - docker run -e CI=true oliverloenning/si-test-frontend npm run test
