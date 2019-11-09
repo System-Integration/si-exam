@@ -4,3 +4,4 @@
 /nginx/.idea
 startup.sh
 
+docker-compose.prod.yml
