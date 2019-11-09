@@ -2,10 +2,6 @@ FROM gradle:5.6.4-jdk8 as builder
 
 WORKDIR /app
 
-COPY build.gradle.kts .
-
-RUN gradle --refresh-dependencies
-
 COPY . .
 
 RUN gradle build
