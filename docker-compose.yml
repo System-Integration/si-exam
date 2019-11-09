@@ -20,7 +20,9 @@ services:
       dockerfile: Dockerfile.dev
       context: ./backend
     volumes:
-      - ./backend/build/libs/backend-all-0.0.1.jar:/app/application.jar
+      - ./backend:/backend
+    ports:
+      - "1234:8080"
   mom:
     image: rmohr/activemq
   database:
