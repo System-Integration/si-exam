@@ -21,8 +21,6 @@ services:
       context: ./backend
     volumes:
       - ./backend:/backend
-    ports:
-      - "1234:8080"
   mom:
     image: rmohr/activemq
   database:
