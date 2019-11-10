@@ -12,4 +12,5 @@ script:
   - docker run oliverloenning/si-test-backend gradle test
 
 after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - ./deploy.sh
