@@ -28,3 +28,12 @@ VALUES ("MSI Infinite X",
 "Desktop",
 16990
 );
+INSERT INTO computer (computer_name, cpu, ram, gpu, hard_drive, computer_type, price)
+VALUES ("Mean Machine",
+"Core i7-9900K",
+"64GB",
+"GeForce RTX2080",
+"2TB SDD",
+"Desktop",
+20500
+);
