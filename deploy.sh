@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$TRAVIS_BRANCH" == "master" ]; then
+if [ "$DOCKER_HUB_PUSH" == "master" ]; then
   docker build -t oliverloenning/si-frontend ./frontend
   docker build -t oliverloenning/si-backend ./backend
   docker build -t oliverloenning/si-nginx ./nginx
