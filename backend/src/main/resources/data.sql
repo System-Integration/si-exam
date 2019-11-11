@@ -37,7 +37,7 @@ VALUES ("Mean Machine",
 "Desktop",
 20500
 );
-INSERT INTO monitor (monitorName, resolution, aspectRatio, screenSize, responseTime, refreshRate, price)
+INSERT INTO monitor (monitor_name, resolution, aspect_ratio, screen_size, response_time, refresh_rate, price)
 VALUES("BenQ XL2456",
 "1920x1080",
 "16:9",
@@ -47,7 +47,7 @@ VALUES("BenQ XL2456",
 3800
 );
 
-INSERT INTO monitor (monitorName, resolution, aspectRatio, screenSize, responseTime, refreshRate, price)
+INSERT INTO monitor (monitor_name, resolution, aspect_ratio, screen_size, response_time, refresh_rate, price)
 VALUES("ASUS VG248QE",
 "1920x1080",
 "16:9",
@@ -57,7 +57,7 @@ VALUES("ASUS VG248QE",
 1999
 );
 
-INSERT INTO monitor (monitorName, resolution, aspectRatio, screenSize, responseTime, refreshRate, price)
+INSERT INTO monitor (monitor_name, resolution, aspect_ratio, screen_size, response_time, refresh_rate, price)
 VALUES("Alienware AW2720HF",
  "1920x1080",
  "16:9",
