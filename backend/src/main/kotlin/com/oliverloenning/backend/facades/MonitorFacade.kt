@@ -10,3 +10,4 @@ class MonitorFacade(private val monitorRepository: MonitorRepository) {
     fun deleteMonitor(monitor: Monitor): String = monitorRepository.delete(monitor).sendSuccess()
 
     fun findMonitorById(id: Long): Monitor = monitorRepository.findById(id).get()
+}
