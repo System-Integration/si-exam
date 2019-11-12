@@ -8,7 +8,7 @@ before_install:
   - docker build -t oliverloenning/si-test-backend -f ./backend/Dockerfile.dev ./backend
 
 script:
-  - docker run oliverloenning/si-test-frontend npm run test:unit
+  - docker run -e CI=true oliverloenning/si-test-frontend npm test
   - docker run oliverloenning/si-test-backend gradle test
 
 after_success:
