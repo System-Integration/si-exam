@@ -13,4 +13,9 @@ class BackendApplicationTests {
 	fun contextLoads() {
 	}
 
+	@Test
+	fun testConnectionToActiveMq(){
+
+	}
+
 }

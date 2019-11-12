@@ -22,7 +22,7 @@ services:
     volumes:
       - ./backend:/backend
   mom:
-    image: rmohr/activemq
+    image: rabbitmq:3.7
   database:
     image: mysql:5.7.22
     restart: always
