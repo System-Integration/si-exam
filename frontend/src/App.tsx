@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import logo from "./logo.svg";
+import { WebSocketComponent } from "./WebSocketComponent";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <WebSocketComponent />
       </header>
     </div>
   );
