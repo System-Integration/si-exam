@@ -2,5 +2,6 @@
 /frontend/.idea
 /backend/.idea
 /nginx/.idea
+.vscode
 
 docker-compose.prod.yml
