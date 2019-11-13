@@ -28,6 +28,8 @@ services:
     ports:
       - "15672:15672"
       - "1234:15675"
+      - "1883:1883"
+      - "5672:5672"
   database:
     image: mysql:5.7.22
     restart: always
