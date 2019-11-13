@@ -1,2 +1,2 @@
 FROM rabbitmq:3.7-management
-RUN rabbitmq-plugins enable rabbitmq_management rabbitmq_mqtt rabbitmq_management_agent rabbitmq_web_dispatch rabbitmq_web_mqtt
+RUN rabbitmq-plugins enable rabbitmq_management rabbitmq_mqtt rabbitmq_management_agent rabbitmq_web_dispatch rabbitmq_web_mqtt rabbitmq_amqp1_0

@@ -4,7 +4,7 @@ interface Props {}
 
 export const WebSocketComponent: React.FC<Props> = () => {
   useEffect(() => {
-    const client = connect("ws://localhost:15675/ws");
+    const client = connect("ws://localhost:1234/ws");
     client.on("connect", function() {
       client.subscribe("dasdsadsa", function(err) {
         if (!err) {

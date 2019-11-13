@@ -27,6 +27,7 @@ services:
       context: ./rabbitmq
     ports:
       - "15672:15672"
+      - "1234:15675"
   database:
     image: mysql:5.7.22
     restart: always
