@@ -1,17 +1,16 @@
-import { connect } from "mqtt";
+import { connect, IClientOptions } from "mqtt";
 import React, { useEffect } from "react";
 interface Props {}
-
 export const WebSocketComponent: React.FC<Props> = () => {
   useEffect(() => {
-    const client = connect("tcp://localhost:1234/ws");
+    const client = connect("/socket", {
+      protocol: "ws",
+      clientId: "Client"
+    });
     client.on("connect", function() {
-      client.subscribe("dasdsadsa", function(err) {
+      client.subscribe("test", function(err) {
         if (!err) {
-          client.publish("dasdsadsa", "Hello mqtt");
-          client.publish("presence", "Hello mqtt");
-          client.publish("presence", "Hello mqtt");
-          client.publish("presence", "Hello mqtt");
+          client.publish("test", "Hello mqtt");
         }
       });
     });
