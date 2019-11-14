@@ -1,6 +1,6 @@
 import React from "react";
-import { Menu, Icon } from "antd";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { Menu } from "antd";
+import { Link, useLocation } from "react-router-dom";
 interface Props {}
 
 export const CustomMenu: React.FC<Props> = () => {
