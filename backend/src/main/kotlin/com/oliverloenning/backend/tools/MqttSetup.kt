@@ -21,17 +21,16 @@ class MqttSetup {
 
     @Bean
     fun inbound(): MessageProducer {
-        val adapter = MqttPahoMessageDrivenChannelAdapter("ws://mom:15675/ws", "Server",
-                "topic1", "topic2")
+        val adapter = MqttPahoMessageDrivenChannelAdapter("ws://mom:15675/ws", "Server", "test")
         adapter.setCompletionTimeout(5000)
         adapter.setConverter(DefaultPahoMessageConverter())
-        adapter.setQos(1)
+        adapter.setQos(0)
         adapter.outputChannel = mqttInputChannel()
         return adapter
     }
 
     @Bean
-    @ServiceActivator(inputChannel = "test")
+    @ServiceActivator(inputChannel = "mqttInputChannel")
     fun handler(): MessageHandler {
         return MessageHandler { message -> println(message.payload) }
     }

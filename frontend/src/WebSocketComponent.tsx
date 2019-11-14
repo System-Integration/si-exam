@@ -10,14 +10,15 @@ export const WebSocketComponent: React.FC<Props> = () => {
     client.on("connect", function() {
       client.subscribe("test", function(err) {
         if (!err) {
-          client.publish("test", "Hello mqtt");
+          client.publish("test", "Hmm");
         }
       });
     });
-
+    /*
     client.on("message", (queue, msg) => {
       console.log(msg.toString());
     });
+    */
   });
   return <div>hi</div>;
 };
