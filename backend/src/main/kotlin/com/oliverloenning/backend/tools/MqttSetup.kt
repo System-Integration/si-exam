@@ -32,6 +32,11 @@ class MqttSetup {
     @Bean
     @ServiceActivator(inputChannel = "mqttInputChannel")
     fun handler(): MessageHandler {
-        return MessageHandler { message -> println(message.payload) }
+        return MessageHandler {
+            when (it.headers.get("mqtt_receivedTopic")) {
+                "test" -> println(it.payload)
+                else -> println("No queue specified")
+            }
+        }
     }
 }

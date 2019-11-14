@@ -10,7 +10,7 @@ export const WebSocketComponent: React.FC<Props> = () => {
     client.on("connect", function() {
       client.subscribe("test", function(err) {
         if (!err) {
-          client.publish("test", "Hmm");
+          client.publish("test", "Hello World!");
         }
       });
     });
