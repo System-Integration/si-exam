@@ -32,6 +32,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.springframework.integration:spring-integration-mqtt:5.2.0.RELEASE")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	compile(group = "com.google.code.gson", name = "gson", version = "2.7")
+
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.amqp:spring-rabbit-test")
