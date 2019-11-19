@@ -2,11 +2,11 @@ package com.oliverloenning.backend.daos
 
 import javax.persistence.*
 
-@Entity
-data class Order(
+@Entity(name = "orders")
+class Order(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
-        val computers: String,
-        val monitors: String
+        val id: Long?,
+        var computers: String,
+        var monitors: String
 )

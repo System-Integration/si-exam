@@ -15,6 +15,9 @@ services:
     volumes:
       - /app/node_modules
       - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
   api:
     build:
       dockerfile: Dockerfile.dev
