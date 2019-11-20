@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/rootReducer";
 import { addItemToCart } from "../redux/slices/cartSlice";
-import { Col, Table } from "antd";
+import { Table, Button } from "antd";
 
 interface Props {}
 
@@ -15,20 +15,30 @@ const Shop: React.FC<Props> = () => {
   return (
     <div style={{ margin: "auto" }}>
       <Table
-        dataSource={computers}
+        dataSource={computers.map(computer => {
+          return { ...computer, key: computer.computerName };
+        })}
         columns={[
           {
             title: "",
             key: "action",
-            render: (text, record) => (
-              <a
-                onClick={() =>
-                  dispatch(addItemToCart({ id: "computers", content: record }))
-                }
-              >
-                Select
-              </a>
-            )
+            render: (_, record) => {
+              const { key, ...computer } = record;
+              return (
+                <Button
+                  onClick={() =>
+                    dispatch(
+                      addItemToCart({
+                        id: "computers",
+                        content: computer
+                      })
+                    )
+                  }
+                >
+                  Select
+                </Button>
+              );
+            }
           },
           { title: "Name", dataIndex: "computerName", key: "name" },
           { title: "Cpu", dataIndex: "cpu", key: "cpu" },
@@ -37,20 +47,30 @@ const Shop: React.FC<Props> = () => {
         ]}
       />
       <Table
-        dataSource={monitors}
+        dataSource={monitors.map(monitor => {
+          return { ...monitor, key: monitor.monitorName };
+        })}
         columns={[
           {
             title: "",
             key: "action",
-            render: (text, record) => (
-              <a
-                onClick={() =>
-                  dispatch(addItemToCart({ id: "monitors", content: record }))
-                }
-              >
-                Select
-              </a>
-            )
+            render: (_, record) => {
+              const { key, ...monitor } = record;
+              return (
+                <Button
+                  onClick={() =>
+                    dispatch(
+                      addItemToCart({
+                        id: "monitors",
+                        content: monitor
+                      })
+                    )
+                  }
+                >
+                  Select
+                </Button>
+              );
+            }
           },
           { title: "Name", dataIndex: "monitorName", key: "name" },
           { title: "Screen size", dataIndex: "screenSize", key: "screenSize" },

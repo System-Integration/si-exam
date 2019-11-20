@@ -1,36 +1,28 @@
-import { connect } from "mqtt";
+import { connect, MqttClient } from "mqtt";
 import React, { useEffect } from "react";
 
-export default (
-  channel: string,
-  returnChannel: string,
-  message: string,
-  toggle: boolean,
-  setToggle: React.Dispatch<React.SetStateAction<boolean>>
-): void => {
+export default (): MqttClient => {
+  const client = connect("/socket", {
+    protocol: "ws",
+    clientId: "Client"
+  });
   useEffect(() => {
-    const client = connect("/socket", {
-      protocol: "ws",
-      clientId: "Client"
+    client.on("connect", function() {
+      client.subscribe("aggregator");
+      client.subscribe("result");
     });
 
-    if (toggle) {
-      client.on("connect", function() {
-        client.subscribe(channel, function(err) {
-          if (!err) {
-            client.publish(channel, message);
-            setToggle(false);
-          }
-        });
-      });
-    }
-
-    client.on("message", (queue, msg) => {
-      if (queue === returnChannel) console.log(msg.toString());
+    client.on("message", (topic, message) => {
+      if (topic === "result") {
+      }
+      console.log(topic);
+      console.log(message.toString());
     });
 
     return () => {
       client.end();
     };
-  }, [toggle, channel, message, returnChannel, setToggle]);
+  }, []);
+
+  return client;
 };

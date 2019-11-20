@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/rootReducer";
 import { deleteItemFromCart } from "../redux/slices/cartSlice";
 import useConnectToRMQ from "../hooks/useConnectToRMQ";
-import { List, Typography, Col, Button } from "antd";
+import { List, Button } from "antd";
+import CustomModal from "./CustomModal";
 
 interface Props {}
 
@@ -12,14 +13,7 @@ const Cart: React.FC<Props> = () => {
   const { computers, monitors } = cart;
   const [toggle, setToggle] = React.useState(false);
   const dispatch = useDispatch();
-
-  useConnectToRMQ(
-    "aggregator",
-    "aggregatorResult",
-    JSON.stringify(cart),
-    toggle,
-    setToggle
-  );
+  const client = useConnectToRMQ();
 
   return (
     <div style={{ margin: "auto" }}>
@@ -64,9 +58,17 @@ const Cart: React.FC<Props> = () => {
       />
       {computers.length + monitors.length !== 0 && (
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button onClick={() => setToggle(true)}>Create order</Button>
+          <Button
+            onClick={() => {
+              client.publish("aggregator", JSON.stringify(cart));
+              setToggle(true);
+            }}
+          >
+            Create order
+          </Button>
         </div>
       )}
+      <CustomModal toggle={toggle} setToggle={setToggle} />
     </div>
   );
 };
