@@ -4,7 +4,7 @@ This project is about making integration patterns
 ### Authors 📘
 Mathias Igel  
 Mathias Jensenius  
-Oliver Lønning
+Oliver Lønning  
 Mohammed Umar Ulhaq
 
 ## 1️⃣Business Scenario 📈
