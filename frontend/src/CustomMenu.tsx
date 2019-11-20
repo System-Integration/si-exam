@@ -18,15 +18,15 @@ export const CustomMenu: React.FC<Props> = () => {
       <Menu.Item key="/">
         <Link to="/">Startpage</Link>
       </Menu.Item>
-      <Menu.Item key="/">
+      <Menu.Item key="/shop">
         <Link to="/shop">Shop</Link>
       </Menu.Item>
-      <Menu.Item key="/">
-        <Badge count={computers.length + monitors.length}>
-          <Link to="/cart">
+      <Menu.Item key="/cart">
+        <Link to="/cart">
+          <Badge count={computers.length + monitors.length}>
             <Icon type="shopping-cart" />
-          </Link>
-        </Badge>
+          </Badge>
+        </Link>
       </Menu.Item>
     </Menu>
   );
