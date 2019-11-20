@@ -69,12 +69,14 @@ class MqttInChannel (private val orderFacade: OrderFacade, private val context: 
                     val gateway = context.getBean(MqttClientConfig::class.java).customMqttClient()
                     gateway.publish("result", "Success!".toByteArray(), 0, false)
                 }
+                /*
                 "splitter" -> {
                     println(it.payload)
                 }
                 "contentFilter" -> {
 
                 }
+                */
                 else -> throw(Throwable("No queue specified!"))
             }
         }
