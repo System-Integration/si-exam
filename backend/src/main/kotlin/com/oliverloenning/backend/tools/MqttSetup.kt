@@ -39,15 +39,13 @@ class MqttSetup (private val orderFacade: OrderFacade) {
     @ServiceActivator(inputChannel = "mqttInputChannel")
     fun handler(): MessageHandler {
         return MessageHandler {
-            println(it)
             when (it.headers["mqtt_receivedTopic"]) {
                 "aggregator" -> {
-                    
+
                     val gson = Gson()
                     val aggregatorMessage = gson.fromJson(it.payload as String, AggregatorMessage::class.java)
                     var computerIds = ""
                     var monitorIds = ""
-                    aggregatorMessage.computers
                     for (computer in aggregatorMessage.computers) {
                         computerIds += "${computer.id},"
                     }
@@ -57,6 +55,7 @@ class MqttSetup (private val orderFacade: OrderFacade) {
                     val order = Order(id = null, computers = computerIds.dropLast(1), monitors = monitorIds.dropLast(1))
 
                     orderFacade.addNewOrder(order)
+
                     TODO("Send something back to the client")
                 }
                 "splitter" -> {

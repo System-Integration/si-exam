@@ -14,7 +14,6 @@ export default (
       clientId: "Client"
     });
 
-    //eg: 'connect'
     if (toggle) {
       client.on("connect", function() {
         client.subscribe(channel, function(err) {

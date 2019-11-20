@@ -62,9 +62,11 @@ const Cart: React.FC<Props> = () => {
           </List.Item>
         )}
       />
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button onClick={() => setToggle(true)}>Create order</Button>
-      </div>
+      {computers.length + monitors.length !== 0 && (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button onClick={() => setToggle(true)}>Create order</Button>
+        </div>
+      )}
     </div>
   );
 };

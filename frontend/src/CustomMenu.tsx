@@ -19,7 +19,7 @@ export const CustomMenu: React.FC<Props> = () => {
         <Link to="/">Startpage</Link>
       </Menu.Item>
       <Menu.Item key="/">
-        <Link to="/computers">Computers</Link>
+        <Link to="/shop">Shop</Link>
       </Menu.Item>
       <Menu.Item key="/">
         <Badge count={computers.length + monitors.length}>
