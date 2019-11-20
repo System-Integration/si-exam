@@ -12,23 +12,23 @@ We are making a computer💻 store. With this a customer will be able to select 
 
 ## 2️⃣Architecture 🔧
 We have many different parts of the system:
-- Api
-- Mom
-- Frontend
-- Backend
-- Database
+- Nginx(Proxy)
+- Mom(RabbitMQ Message Broker)
+- Frontend(ReactJS + Redux + TypeScript)
+- Backend(Kotlin + JPA + Spring Boot)
+- Database(MySQL)
 
 ##  3️⃣ Integration patterns
 We are using the following patterns:
 - Aggretation
 - Dynamic Router
-- Message
+- Message Broker
 - Event-Driven Consumer
-- Event Message
+- Message Channel
 
 ## 4️⃣Illustrations
 
-*To come*
+![system](/artifacts/system.png)
 
 
 ## How to make this project work
