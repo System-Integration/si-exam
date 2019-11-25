@@ -29,14 +29,20 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	/*
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.springframework.integration:spring-integration-mqtt:5.2.0.RELEASE")
+	*/
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	compile(group = "com.google.code.gson", name = "gson", version = "2.7")
+	implementation(group = "com.google.code.gson", name = "gson", version = "2.7")
+	// https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3
+	implementation(group = "org.eclipse.paho", name = "org.eclipse.paho.client.mqttv3", version = "1.2.2")
 
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	/*
 	testImplementation("org.springframework.amqp:spring-rabbit-test")
+*/
 }
 
 

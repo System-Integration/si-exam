@@ -1,8 +1,10 @@
 package com.oliverloenning.backend.tools
 
 import org.eclipse.paho.client.mqttv3.MqttClient
+import org.eclipse.paho.client.mqttv3.MqttClientPersistence
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttMessage
+import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,7 +15,7 @@ class MqttClientConfig(private val context: ApplicationContext) {
 
     @Bean
     fun customMqttClient(): MqttClient {
-        val mqttClient = MqttClient("ws://mom:15675/ws", "asdasdasd")
+        val mqttClient = MqttClient("ws://mom:15675/ws", "Server", MqttDefaultFilePersistence())
 
         val options = MqttConnectOptions()
         options.isAutomaticReconnect=true
@@ -39,6 +41,7 @@ class MqttClientConfig(private val context: ApplicationContext) {
     }
 
 
+    /*
     fun subscribe(topic: String) {
 
         val customMqttClient = context.getBean("customMqttClient", MqttClient::class.java)
@@ -50,4 +53,5 @@ class MqttClientConfig(private val context: ApplicationContext) {
         }
 
     }
+    */
 }
