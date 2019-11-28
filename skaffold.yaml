@@ -15,7 +15,11 @@ build:
           - "**/*.js"
           - "**/*.css"
           - "**/*.html"
+    - image: oliverloenning/si-backendjib
+      context: backend
+      jib: {}
 deploy:
   kubectl:
     manifests:
       - k8s/frontend-deployment.yaml
+      - k8s/backend-deployment.yaml

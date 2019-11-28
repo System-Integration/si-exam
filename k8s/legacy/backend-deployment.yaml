@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: oliverloenning/si-backend
+          image: oliverloenning/si-legacy-backend
           ports:
             - containerPort: 8080
           env:

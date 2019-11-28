@@ -21,6 +21,10 @@ services:
       context: ./backend
     volumes:
       - ./backend:/backend
+    environment:
+      DATABASE_USER: "root"
+      DATABASE_PASSWORD: "test"
+      DATABASE_HOSTNAME: "database"
   mom:
     build:
       dockerfile: Dockerfile.dev
