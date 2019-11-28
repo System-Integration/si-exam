@@ -24,7 +24,7 @@ services:
       context: ./backend
     volumes:
       - ./backend:/backend
-  mom:
+  mom-cluster-ip-service:
     build:
       dockerfile: Dockerfile.dev
       context: ./rabbitmq
