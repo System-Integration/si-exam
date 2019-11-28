@@ -10,7 +10,7 @@ before_install:
 
 script:
   - docker run -e CI=true oliverloenning/si-test-frontend npm test
-  - ./backend/gradlew test
+  - cd backend && ./gradlew test
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
