@@ -7,10 +7,11 @@ services:
 
 before_install:
   - docker build -t oliverloenning/si-test-frontend -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t oliverloenning/si-test-backend -f ./backend/Dockerfile.dev ./backend
 
 script:
   - docker run -e CI=true oliverloenning/si-test-frontend npm test
-  - cd backend && ./gradlew test
+  - docker run oliverloenning/si-test-backend gradle test
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
