@@ -2,7 +2,7 @@ import { connect, MqttClient } from "mqtt";
 import React, { useEffect } from "react";
 
 export default (): MqttClient => {
-  const client = connect("/mqttsocket/ws", {
+  const client = connect("/mom-socket/ws", {
     protocol: "ws",
     clientId: "Client"
   });
