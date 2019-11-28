@@ -17,3 +17,10 @@ spec:
           image: oliverloenning/si-backend
           ports:
             - containerPort: 8080
+          env:
+            - name: DATABASE_USER
+              value: "root"
+            - name: DATABASE_PASSWORD
+              value: "test"
+            - name: MOM_SOCKET_IP
+              value: mom-cluster-ip-service

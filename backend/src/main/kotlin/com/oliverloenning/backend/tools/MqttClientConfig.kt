@@ -15,7 +15,8 @@ class MqttClientConfig(private val context: ApplicationContext) {
 
     @Bean
     fun customMqttClient(): MqttClient {
-        val mqttClient = MqttClient("ws://mom-cluster-ip-service:15675/ws", "Server", MqttDefaultFilePersistence())
+        val env = System.getenv("MOM_SOCKET_IP") ?: "mom"
+        val mqttClient = MqttClient("ws://$env:15675/ws", "Server", MqttDefaultFilePersistence())
 
         val options = MqttConnectOptions()
         options.isAutomaticReconnect=true
