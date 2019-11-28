@@ -15,15 +15,16 @@ services:
     volumes:
       - /app/node_modules
       - ./frontend:/app
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
   api:
     build:
       dockerfile: Dockerfile.dev
       context: ./backend
     volumes:
       - ./backend:/backend
+    environment:
+      DATABASE_USER: "root"
+      DATABASE_PASSWORD: "test"
+      DATABASE_HOSTNAME: "database"
   mom:
     build:
       dockerfile: Dockerfile.dev

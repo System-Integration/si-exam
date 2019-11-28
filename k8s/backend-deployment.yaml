@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       component: server
@@ -24,3 +24,5 @@ spec:
               value: "test"
             - name: MOM_SOCKET_IP
               value: mom-cluster-ip-service
+            - name: DATABASE_HOSTNAME
+              value: database-cluster-ip-service

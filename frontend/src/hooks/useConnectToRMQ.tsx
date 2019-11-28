@@ -1,12 +1,12 @@
 import { connect, MqttClient } from "mqtt";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default (): MqttClient => {
   const client = connect("/mom-socket/ws", {
     protocol: "ws",
     clientId: "Client"
   });
-  useEffect(() => {
+  React.useEffect(() => {
     client.on("connect", function() {
       client.subscribe("admin-dashboard");
     });
@@ -16,7 +16,7 @@ export default (): MqttClient => {
     return () => {
       client.end();
     };
-  }, []);
+  });
 
   return client;
 };
