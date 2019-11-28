@@ -16,8 +16,4 @@ spec:
         - name: mom
           image: oliverloenning/si-rabbitmq
           ports:
-            - containerPort: 4369
-            - containerPort: 5671
-            - containerPort: 5672
-            - containerPort: 25672
             - containerPort: 15675
