@@ -12,4 +12,4 @@ WORKDIR /app
 
 COPY --from=builder /app/build/libs/backend-0.0.1-SNAPSHOT.jar ./application.jar
 
-CMD ["java", "-jar", "-Dspring.profiles.active=prod", "application.jar"]
+CMD ["java", "-jar", "application.jar"]
