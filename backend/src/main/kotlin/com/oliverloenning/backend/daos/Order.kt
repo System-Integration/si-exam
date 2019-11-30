@@ -7,6 +7,8 @@ class Order(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long?,
-        var computers: String,
-        var monitors: String
+        @OneToMany
+        var computers: List<Computer>,
+        @OneToMany
+        var monitors: List<Monitor>
 )

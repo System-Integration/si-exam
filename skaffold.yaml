@@ -15,7 +15,7 @@ build:
           - "**/*.js"
           - "**/*.css"
           - "**/*.html"
-    - image: oliverloenning/si-backendjib
+    - image: oliverloenning/si-backend
       context: backend
       jib: {}
 deploy:
