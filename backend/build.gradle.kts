@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.*
 
 plugins {
 	id("org.springframework.boot") version "2.1.10.RELEASE"
@@ -23,6 +24,10 @@ configurations {
 repositories {
 	mavenCentral()
 }
+
+// jib conf
+jib.to.image="oliverloenning/si-backend"
+jib.to.tags=mutableSetOf("latest", System.getenv("SHA"))
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
