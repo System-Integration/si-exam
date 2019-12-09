@@ -1,11 +1,14 @@
 #!/bin/bash
+docker build -t oliverloenning/si-frontend:latest -t oliverloenning/si-frontend:$SHA ./frontend
+docker build -t oliverloenning/si-rabbitmq:latest -t oliverloenning/si-rabbitmq:$SHA ./rabbitmq
+cd backend && ./gradlew jib && cd ..
 
-if [ "$DOCKER_HUB_PUSH" == "master" ]; then
-  docker build -t oliverloenning/si-frontend ./frontend
-  docker build -t oliverloenning/si-legacy-backend ./backend
-  docker build -t oliverloenning/si-rabbitmq ./rabbitmq
-  docker push oliverloenning/si-frontend
-  docker push oliverloenning/si-legacy-backend
-  docker push oliverloenning/si-rabbitmq
-  cd backend && ./gradlew jib --image=oliverloenning/si-backend
-fi
+docker push oliverloenning/si-frontend:latest
+docker push oliverloenning/si-rabbitmq:latest
+docker push oliverloenning/si-frontend:$SHA
+docker push oliverloenning/si-rabbitmq:$SHA
+
+kubectl apply -f k8s
+kubectl set image deployments/frontend-deployment frontend=oliverloenning/si-frontend:$SHA
+kubectl set image deployments/mom-deployment mom=oliverloenning/si-rabbitmq:$SHA
+kubectl set image deployments/backend-deployment backend=oliverloenning/si-backend:$SHA
