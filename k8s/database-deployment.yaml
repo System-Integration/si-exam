@@ -19,6 +19,9 @@ spec:
             - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "test"
+              valueFrom:
+                secretKeyRef:
+                  name: sidatabase
+                  key: SIDATABASE
             - name: MYSQL_DATABASE
               value: "db"
