@@ -6,7 +6,7 @@ import javax.persistence.*
 class Order(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long?,
+        val id: Long? = null,
         @OneToMany
         var computers: List<Computer>,
         @OneToMany
