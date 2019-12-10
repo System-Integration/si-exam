@@ -3,5 +3,6 @@
 /backend/.idea
 /nginx/.idea
 .vscode
+.DS_Store
 
 docker-compose.prod.yml

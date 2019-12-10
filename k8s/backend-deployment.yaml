@@ -21,7 +21,10 @@ spec:
             - name: DATABASE_USER
               value: "root"
             - name: DATABASE_PASSWORD
-              value: "test"
+              valueFrom:
+                secretKeyRef:
+                  name: sidatabase
+                  key: SIDATABASE
             - name: MOM_SOCKET_IP
               value: mom-cluster-ip-service
             - name: DATABASE_HOSTNAME
