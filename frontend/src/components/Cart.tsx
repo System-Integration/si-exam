@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/rootReducer";
 import { deleteItemFromCart } from "../redux/slices/cartSlice";
-import useConnectToRMQ from "../hooks/useConnectToRMQ";
 import { List, Button } from "antd";
 import CustomModal from "./CustomModal";
+import FetchFacade from "../rest/FetchFacade";
 
 interface Props {}
 
@@ -59,7 +59,9 @@ const Cart: React.FC<Props> = () => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button
             onClick={() => {
-              setToggle(true);
+              FetchFacade.postOrder(computers, monitors).then(res => {
+                if (res.status) setToggle(true);
+              });
             }}
           >
             Create order
