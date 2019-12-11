@@ -19,3 +19,8 @@ export interface Computer {
   computerType: string;
   price: number;
 }
+
+export interface AjaxResponse {
+  status: boolean;
+  message: string;
+}

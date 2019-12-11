@@ -41,18 +41,4 @@ class MqttClientConfig(private val context: ApplicationContext) {
         customMqttClient.disconnect()
     }
 
-
-    /*
-    fun subscribe(topic: String) {
-
-        val customMqttClient = context.getBean("customMqttClient", MqttClient::class.java)
-
-        customMqttClient.subscribeWithResponse(topic) {topic, message ->
-            run {
-                println(message.payload)
-            }
-        }
-
-    }
-    */
 }
