@@ -13,7 +13,6 @@ const Cart: React.FC<Props> = () => {
   const { computers, monitors } = cart;
   const [toggle, setToggle] = React.useState(false);
   const dispatch = useDispatch();
-  const client = useConnectToRMQ();
 
   return (
     <div style={{ margin: "auto" }}>
@@ -60,7 +59,6 @@ const Cart: React.FC<Props> = () => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button
             onClick={() => {
-              client.publish("aggregator", JSON.stringify(cart));
               setToggle(true);
             }}
           >

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.8",
     "@reduxjs/toolkit": "^1.0.4",
     "antd": "^3.25.1",
     "mqtt": "^3.0.0",
