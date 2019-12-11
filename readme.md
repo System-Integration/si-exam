@@ -47,12 +47,12 @@ We are using the following patterns:
 
 ## Docker-Compose (UNSTABLE_LEGACY)
 
-1. `sh git clone {project}`
-2. `sh docker-compose up`
+1. `git clone {project}`
+2. `docker-compose up`
 
 ## Kubernetes Skaffold (PREFERRED)
 
 1. `kubectl create secret generic sidatabase --from-literal SIDATABASE=mysupersecretpassword` to create a encrypted database password
-2. `sh kubectl apply -f k8s` to apply kubernetes objects
-3. `sh kubectl delete deployment frontend-deployment && kubectl delete deployment backend-deployment` to delete production objects so we can run as development
-4. `sh skaffold dev --trigger notify` to run our frontend and backend in development
+2. `kubectl apply -f k8s` to apply kubernetes objects
+3. `kubectl delete deployment frontend-deployment && kubectl delete deployment backend-deployment` to delete production objects so we can run as development
+4. `skaffold dev --trigger notify` to run our frontend and backend in development
