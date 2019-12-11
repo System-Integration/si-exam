@@ -52,7 +52,7 @@ We are using the following patterns:
 
 ## Kubernetes Skaffold (PREFERRED)
 
-1. `sh kubectl create secret generic sidatabase --from-literal SIDATABASE=mysupersecretpassword to create a encrypted database password
+1. `sh kubectl create secret generic sidatabase --from-literal SIDATABASE=mysupersecretpassword` to create a encrypted database password
 2. `sh kubectl apply -f k8s` to apply kubernetes objects
 3. `sh kubectl delete deployment frontend-deployment && kubectl delete deployment backend-deployment` to delete production objects so we can run as development
 4. `sh skaffold dev --trigger notify` to run our frontend and backend in development
