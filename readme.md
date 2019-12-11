@@ -30,14 +30,22 @@ We are using the following patterns:
 
 ![system](/artifacts/system.png)
 
+## Requisite
 
-## How to make this project work
+[Have Docker🐳 installed](https://www.docker.com)
 
-Have Docker🐳 installed and gradle installed on your development machine
+[Have Kubernetes installed](https://kubernetes.io)
+
+[(Preferred) Have Skaffold installed](https://github.com/GoogleContainerTools/skaffold)
+
+
+## Docker-Compose (UNSTABLE_LEGACY)
 
 1. `sh git clone {project}`
 2. `sh docker-compose up`
 
-## Editing the server
+## Kubernetes Skaffold (PREFERRED)
 
-- 1. `sh cd backend && gradle build -t` . Let it run while you develop on the server
+1. `sh kubectl apply -f k8s` to apply kubernetes objects
+2. `sh kubectl delete deployment frontend-deployment && kubectl delete deployment backend-deployment` to delete production objects we would like to run as development
+3. `sh skaffold dev --trigger notify` to run our frontend and backend in development
