@@ -1,5 +1,5 @@
-# 🎉System integration Mini Project 2 🎉
-This project is about making integration patterns
+# 🎉System integration Exam Project 🎉
+Final product for si-exam
 
 ### Authors 📘
 Mathias Igel  
@@ -8,7 +8,7 @@ Oliver Lønning
 Mohammed Umar Ulhaq
 
 ## 1️⃣Business Scenario 📈
-We are making a computer💻 store. With this a customer will be able to select a computer💻 and purchase it 💲
+We are making a computer💻 store.
 
 ## 2️⃣Architecture 🔧
 We have many different parts of the system:
