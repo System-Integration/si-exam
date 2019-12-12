@@ -5,7 +5,7 @@ Final product for si-exam
 Mathias Igel  
 Mathias Jensenius  
 Oliver Lønning  
-Mohammed Umar Ulhaq
+Mohammed Omer Ulhaq
 
 ## 1️⃣Business Scenario 📈
 We are making a computer💻 store.
