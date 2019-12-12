@@ -1,15 +1,15 @@
 apiVersion: skaffold/v1beta15
-kind: Config
+kind: Config #This is a config file. :whale:
 build:
   local:
-    push: false
+    push: false #Whether or not to push directly on changes or not
   artifacts:
     - image: oliverloenning/si-frontend
       context: frontend
       docker:
         dockerfile: Dockerfile.dev
       sync:
-        infer:
+        infer: #Look for changes in any of these files and rebuild
           - "**/*.ts"
           - "**/*.tsx"
           - "**/*.js"

@@ -5,6 +5,8 @@ cd backend && ./gradlew jib && cd ..
 
 docker push oliverloenning/si-frontend:latest
 docker push oliverloenning/si-rabbitmq:latest
+
+#Push using the SHA value of the latest commit rather than than LATEST because latest will never change
 docker push oliverloenning/si-frontend:$SHA
 docker push oliverloenning/si-rabbitmq:$SHA
 
