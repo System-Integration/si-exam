@@ -5,7 +5,7 @@ Final product for si-exam
 Mathias Igel  
 Mathias Jensenius  
 Oliver Lønning  
-Mohammed Omer Ulhaq
+Mohammed Umar Ulhaq
 
 ## 1️⃣Business Scenario 📈
 We are making a computer💻 store.
@@ -42,6 +42,10 @@ We are using the following patterns:
 
 [Have Kubernetes installed](https://kubernetes.io)
 
+[Ingress installed for kubernetes](https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command)
+
+`kubectl create secret generic sidatabase --from-literal SIDATABASE=mysupersecretpassword` to create a encrypted database password for database
+
 [(Preferred) Have Skaffold installed](https://github.com/GoogleContainerTools/skaffold)
 
 
@@ -52,7 +56,4 @@ We are using the following patterns:
 
 ## Kubernetes Skaffold (PREFERRED)
 
-1. `kubectl create secret generic sidatabase --from-literal SIDATABASE=mysupersecretpassword` to create a encrypted database password
-2. `kubectl apply -f k8s` to apply kubernetes objects
-3. `kubectl delete deployment frontend-deployment && kubectl delete deployment backend-deployment` to delete production objects so we can run as development
-4. `skaffold dev --trigger notify` to run our frontend and backend in development
+1. `./dev.sh`
