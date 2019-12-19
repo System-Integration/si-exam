@@ -57,12 +57,12 @@ We have 1 running cluster: **Multi-cluster**
 
 xDeployment
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 #Where this type of objective is in the kubernetes enviroment
+kind: Deployment #What type of object, predefined. responsible for keeping pods alive and replicating them
 metadata:
-  name: backend-deployment
+  name: backend-deployment #This is the name for the display interface
 spec:
-  replicas: 1
+  replicas: 1 #Amount of pods
   selector:
     matchLabels:
       component: server #We allow communication between all types of "server"
@@ -71,21 +71,64 @@ spec:
       labels:
         component: server #this defines how we look up THIS deployment, what type it is, type  being anything and is just a tag
     spec:
-      containers:
-        - name: backend
-          image: oliverloenning/si-backend
+      containers: #A single pod can contain multiple images, best practice is keeping a single image per pod. This is also an array
+        - name: backend #Creates a pod with specified name +sha_value
+          image: oliverloenning/si-backend #which image to use, found on dockerhub
           ports:
-            - containerPort: 8080
-          env:
+            - containerPort: 8080 #exposes port to kubernetes
+          env: #Enviroment varaibles so it can connect to our database
             - name: DATABASE_USER
               value: "root"
             - name: DATABASE_PASSWORD
-              valueFrom:
+              valueFrom: #secret database with key. Stored within kubernetes cluster
                 secretKeyRef:
                   name: sidatabase
                   key: SIDATABASE
-            - name: MOM_SOCKET_IP
+            - name: MOM_SOCKET_IP #Get IP for mom service
               value: mom-cluster-ip-service
             - name: DATABASE_HOSTNAME
               value: database-cluster-ip-service
+```
+
+ClusteIP service
+```yaml
+apiVersion: v1
+kind: Service #responsible for network access to pods
+metadata:
+  name: backend-cluster-ip-service
+spec:
+  type: ClusterIP #predefined
+  selector:
+    component: server #Enable access to service / deployments with this tag
+  ports:
+    - port: 8080 #which ports to expose
+      targetPort: 8080
+```
+
+Ingress service
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress #Special type for ingress service
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx #We select nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1 
+    nginx.org/websocket-services: "mom-cluster-ip-service"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /?(.*) #if path is blank, send to frontend
+            backend: #Is a property, does not actually use backend
+              serviceName: frontend-cluster-ip-service
+              servicePort: 3000
+          - path: /api/?(.*)
+            backend:
+              serviceName: backend-cluster-ip-service
+              servicePort: 8080
+          - path: /mom-socket/?(.*)
+            backend:
+              serviceName: mom-cluster-ip-service
+              servicePort: 15675
 ```
