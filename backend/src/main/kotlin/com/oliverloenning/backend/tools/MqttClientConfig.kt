@@ -6,15 +6,18 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence
+import org.springframework.beans.factory.config.ConfigurableBeanFactory
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Scope
 
 
 @Configuration
 class MqttClientConfig(private val context: ApplicationContext) {
 
     @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     fun customMqttClient(): MqttClient {
         val env = System.getenv("MOM_SOCKET_IP") ?: "mom"
         val mqttClient = MqttClient("ws://$env:15675/ws", "Server", MemoryPersistence())
@@ -28,17 +31,15 @@ class MqttClientConfig(private val context: ApplicationContext) {
         return mqttClient
     }
 
-    fun publish(topic: String, payload: String, qos: Int, retained: Boolean) {
-        val message = MqttMessage()
-        message.payload = payload.toByteArray()
-        message.qos = qos
-        message.isRetained = retained
+}
 
-        val customMqttClient = context.getBean("customMqttClient", MqttClient::class.java)
+fun publish(context: ApplicationContext, payload: String) {
+    val message = MqttMessage()
+    message.payload = payload.toByteArray()
+    message.qos = 0
+    message.isRetained = true
 
-        customMqttClient.publish(topic, message)
+    val customMqttClient = context.getBean("customMqttClient", MqttClient::class.java)
 
-        customMqttClient.disconnect()
-    }
-
+    customMqttClient.publish("history", message)
 }

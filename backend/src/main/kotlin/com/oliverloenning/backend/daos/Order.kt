@@ -7,8 +7,8 @@ class Order(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
-        @OneToMany
+        @OneToMany(mappedBy = "computerOrder")
         var computers: List<Computer>,
-        @OneToMany
+        @OneToMany(mappedBy = "monitorOrder")
         var monitors: List<Monitor>
 )

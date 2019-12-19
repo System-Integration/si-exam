@@ -1,9 +1,6 @@
 package com.oliverloenning.backend.daos
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class Monitor(
@@ -16,5 +13,7 @@ data class Monitor(
         val screenSize: String,
         val responseTime: String,
         val refreshRate: String,
-        val price: Int
+        val price: Int,
+        @ManyToOne(fetch = FetchType.LAZY)
+        val monitorOrder: Order?
 )

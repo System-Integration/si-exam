@@ -1,9 +1,6 @@
 package com.oliverloenning.backend.daos
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 
 @Entity
@@ -17,5 +14,7 @@ data class Computer(
         val gpu: String,
         val hardDrive: String,
         val computerType: String,
-        val price: Int
+        val price: Int,
+        @ManyToOne(fetch = FetchType.LAZY)
+        val computerOrder: Order?
 )
