@@ -25,6 +25,9 @@ export const CustomMenu: React.FC<Props> = () => {
           </Badge>
         </Link>
       </Menu.Item>
+      <Menu.Item>
+        <Link to="/feedback">Let us hear your feedback!</Link>
+      </Menu.Item>
     </Menu>
   );
 };
