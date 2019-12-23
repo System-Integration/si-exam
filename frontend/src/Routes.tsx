@@ -12,9 +12,6 @@ export const Routes: React.FC<Props> = () => (
     <Route path="/cart">
       <Cart />
     </Route>
-    <Route path="/feedback">
-      <Feedback />
-    </Route>
     <Route path="/">
       <Shop />
     </Route>

@@ -1,14 +1,16 @@
 import React from "react";
-import { Menu, Icon, Badge } from "antd";
+import { Menu, Icon, Badge, Button } from "antd";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./redux/rootReducer";
+import { toggleDrawerOn } from "./redux/slices/drawerSlice";
 interface Props {}
 
 export const CustomMenu: React.FC<Props> = () => {
   const location = useLocation();
   const { computers, monitors } = useSelector((state: RootState) => state.cart);
 
+  const dispatch = useDispatch();
   return (
     <Menu
       style={{ textAlign: "center" }}
@@ -25,8 +27,8 @@ export const CustomMenu: React.FC<Props> = () => {
           </Badge>
         </Link>
       </Menu.Item>
-      <Menu.Item>
-        <Link to="/feedback">Let us hear your feedback!</Link>
+      <Menu.Item onClick={() => dispatch(toggleDrawerOn())}>
+        Let us hear your feedback!
       </Menu.Item>
     </Menu>
   );
