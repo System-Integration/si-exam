@@ -24,3 +24,7 @@ export interface AjaxResponse {
   status: boolean;
   message: string;
 }
+
+export interface OrderReponse extends AjaxResponse {
+  resultId: number;
+}

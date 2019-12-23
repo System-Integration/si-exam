@@ -1,15 +1,12 @@
 package com.oliverloenning.backend.daos
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-
+import javax.persistence.*
 
 @Entity
 data class Computer(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "COMPUTER_ID")
         val id: Long,
         val computerName: String,
         val cpu: String,

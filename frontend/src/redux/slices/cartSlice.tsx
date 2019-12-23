@@ -29,10 +29,18 @@ const cart = createSlice({
       state[action.payload.id] = (state[action.payload.id] as any).filter(
         (item: Computer | Monitor, ix: number) => ix !== action.payload.index
       );
+    },
+    removeAllItems(state) {
+      state.computers = [];
+      state.monitors = [];
     }
   }
 });
 
-export const { addItemToCart, deleteItemFromCart } = cart.actions;
+export const {
+  addItemToCart,
+  deleteItemFromCart,
+  removeAllItems
+} = cart.actions;
 
 export default cart.reducer;

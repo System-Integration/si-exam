@@ -5,7 +5,10 @@ import { CustomMenu } from "./CustomMenu";
 import { fetchItems } from "./redux/slices/itemsSlice";
 import { RootState } from "./redux/rootReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { Spin } from "antd";
+import { Spin, Col, Drawer } from "antd";
+import { PurchaseHistory } from "./components/PurchaseHistory";
+import useConnectToRMQ from "./hooks/useConnectToRMQ";
+import { CustomDrawer } from "./CustomDrawer";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,6 +20,8 @@ const App: React.FC = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
+  const messages = useConnectToRMQ();
+
   return (
     <React.Fragment>
       {computers.length === 0 && monitors.length === 0 ? (
@@ -27,7 +32,13 @@ const App: React.FC = () => {
         <BrowserRouter>
           <React.Fragment>
             <CustomMenu />
-            <Routes />
+            <Col span={16}>
+              <Routes />
+              <CustomDrawer />
+            </Col>
+            <Col span={8}>
+              <PurchaseHistory messages={messages} />
+            </Col>
           </React.Fragment>
         </BrowserRouter>
       )}
