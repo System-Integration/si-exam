@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Button } from "antd";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/rootReducer";
-import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { CustomerDocument } from "./CustomerDocument";
 
 interface Props {

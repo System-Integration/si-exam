@@ -1,10 +1,7 @@
-import { connect, MqttClient } from "mqtt";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { addToPurchaseHistory } from "../redux/slices/purchaseHistorySlice";
-
-export default (): MqttClient => {
-  const dispatch = useDispatch();
+import { connect } from "mqtt";
+import React, { useState } from "react";
+export default (): string[] => {
+  const [purchaseHistory, setPurchaseHistory] = useState<string[]>([]);
 
   const client = connect("/mom-socket/ws", {
     protocol: "ws",
@@ -12,13 +9,17 @@ export default (): MqttClient => {
   });
 
   React.useEffect(() => {
-    client.on("connect", function() {
+    client.on("connect", () => {
       client.subscribe("history");
     });
 
     client.on("message", (topic, message) => {
-      console.log(message.toString());
-      dispatch(addToPurchaseHistory(message.toString()));
+      const purchaseMessage = message.toString();
+      if (
+        purchaseHistory.filter(message => message === purchaseMessage)
+          .length === 0
+      )
+        setPurchaseHistory(old => [...old, purchaseMessage]);
     });
 
     return () => {
@@ -26,5 +27,5 @@ export default (): MqttClient => {
     };
   });
 
-  return client;
+  return purchaseHistory;
 };

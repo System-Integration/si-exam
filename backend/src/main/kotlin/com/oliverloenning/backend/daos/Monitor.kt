@@ -6,6 +6,7 @@ import javax.persistence.*
 data class Monitor(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "MONITOR_ID")
         val id: Long,
         val monitorName: String,
         val resolution: String,
@@ -13,7 +14,5 @@ data class Monitor(
         val screenSize: String,
         val responseTime: String,
         val refreshRate: String,
-        val price: Int,
-        @ManyToOne(fetch = FetchType.LAZY)
-        val monitorOrder: Order?
+        val price: Int
 )

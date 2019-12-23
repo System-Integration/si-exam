@@ -2,11 +2,11 @@ package com.oliverloenning.backend.daos
 
 import javax.persistence.*
 
-
 @Entity
 data class Computer(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "COMPUTER_ID")
         val id: Long,
         val computerName: String,
         val cpu: String,
@@ -14,7 +14,5 @@ data class Computer(
         val gpu: String,
         val hardDrive: String,
         val computerType: String,
-        val price: Int,
-        @ManyToOne(fetch = FetchType.LAZY)
-        val computerOrder: Order?
+        val price: Int
 )

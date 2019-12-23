@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Scope
 
 
 @Configuration
-class MqttClientConfig(private val context: ApplicationContext) {
+class MqttClientConfig {
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -31,15 +31,4 @@ class MqttClientConfig(private val context: ApplicationContext) {
         return mqttClient
     }
 
-}
-
-fun publish(context: ApplicationContext, payload: String) {
-    val message = MqttMessage()
-    message.payload = payload.toByteArray()
-    message.qos = 0
-    message.isRetained = true
-
-    val customMqttClient = context.getBean("customMqttClient", MqttClient::class.java)
-
-    customMqttClient.publish("history", message)
 }

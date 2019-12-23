@@ -1,14 +1,11 @@
 import React from "react";
-import { List, Typography, Row } from "antd";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/rootReducer";
-import useConnectToRMQ from "../hooks/useConnectToRMQ";
+import { List, Typography } from "antd";
 
-interface Props {}
+interface Props {
+  messages: string[];
+}
 
-export const PurchaseHistory: React.FC<Props> = () => {
-  const messages = useSelector((state: RootState) => state.purchaseHistory);
-
+export const PurchaseHistory: React.FC<Props> = ({ messages }) => {
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -16,12 +13,17 @@ export const PurchaseHistory: React.FC<Props> = () => {
       <h3 style={{ margin: 8, textAlign: "center" }}>Purchase History</h3>
       <List
         header={<div>Orders</div>}
-        footer={<div>Latest Purchase...</div>}
+        footer={
+          messages.length !== 0 && (
+            <div>{messages[messages.length - 1].split("|")[1]}</div>
+          )
+        }
         bordered
         dataSource={messages}
         renderItem={item => (
           <List.Item>
-            <Typography.Text mark>[ORDER]</Typography.Text> {item}
+            <Typography.Text mark>[ORDER]</Typography.Text> Order has been
+            created with id of: {item.split("|")[0]}
           </List.Item>
         )}
       />

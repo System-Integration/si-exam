@@ -19,7 +19,7 @@ const App: React.FC = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  useConnectToRMQ();
+  const messages = useConnectToRMQ();
 
   return (
     <React.Fragment>
@@ -35,7 +35,7 @@ const App: React.FC = () => {
               <Routes />
             </Col>
             <Col span={8}>
-              <PurchaseHistory />
+              <PurchaseHistory messages={messages} />
             </Col>
           </React.Fragment>
         </BrowserRouter>
