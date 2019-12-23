@@ -2,6 +2,7 @@ package com.oliverloenning.backend.controller
 
 import com.oliverloenning.backend.daos.Order
 import com.oliverloenning.backend.dtos.AjaxResponse
+import com.oliverloenning.backend.dtos.OrderResponse
 import com.oliverloenning.backend.facades.ComputerFacade
 import com.oliverloenning.backend.facades.MonitorFacade
 import com.oliverloenning.backend.facades.OrderFacade
@@ -21,6 +22,6 @@ class OrderController(private val monitorFacade: MonitorFacade, private val orde
 
         publish(context, "${result.id}|${result.createdDate}")
 
-        return AjaxResponse(true, "Success!")
+        return OrderResponse(true, "You successfully purchased your items!", result.id)
     }
 }

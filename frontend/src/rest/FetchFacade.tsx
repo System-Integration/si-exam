@@ -1,11 +1,11 @@
 // @ts-ignore
-import { Computer, Monitor, AjaxResponse } from "../interfaces/types";
+import { Computer, Monitor, OrderReponse } from "../interfaces/types";
 
 class FetchFacade {
   postOrder = (
     computers: Computer[],
     monitors: Monitor[]
-  ): Promise<AjaxResponse> =>
+  ): Promise<OrderReponse> =>
     fetch("/api/orders", {
       method: "POST",
       headers: {
