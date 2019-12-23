@@ -16,10 +16,7 @@ export const CustomMenu: React.FC<Props> = () => {
       selectedKeys={[location.pathname]}
     >
       <Menu.Item key="/">
-        <Link to="/">Startpage</Link>
-      </Menu.Item>
-      <Menu.Item key="/shop">
-        <Link to="/shop">Shop</Link>
+        <Link to="/">Shop</Link>
       </Menu.Item>
       <Menu.Item key="/cart">
         <Link to="/cart">
