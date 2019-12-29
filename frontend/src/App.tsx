@@ -5,7 +5,7 @@ import { CustomMenu } from "./CustomMenu";
 import { fetchItems } from "./redux/slices/itemsSlice";
 import { RootState } from "./redux/rootReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { Spin, Col, Drawer } from "antd";
+import { Spin, Col } from "antd";
 import { PurchaseHistory } from "./components/PurchaseHistory";
 import useConnectToRMQ from "./hooks/useConnectToRMQ";
 import { CustomDrawer } from "./CustomDrawer";

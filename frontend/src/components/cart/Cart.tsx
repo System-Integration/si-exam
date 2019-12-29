@@ -5,11 +5,11 @@ import { deleteItemFromCart } from "../../redux/slices/cartSlice";
 import { List, Button } from "antd";
 import FetchFacade from "../../rest/FetchFacade";
 import { CartResult } from "./CartResult";
-import { OrderReponse } from "../../interfaces/types";
+import { OrderResponse } from "../../global-types";
 
 interface Props {}
 
-export interface ResponseState extends OrderReponse {
+export interface ResponseState extends OrderResponse {
   hasPurchased: boolean;
 }
 

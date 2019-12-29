@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Page, View, Text } from "@react-pdf/renderer";
-import { Computer, Monitor } from "../interfaces/types";
+import { Computer, Monitor } from "../global-types";
 interface Props {
   computers: Computer[];
   monitors: Monitor[];

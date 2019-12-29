@@ -1,5 +1,5 @@
-import { Computer, Monitor } from "../../interfaces/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Computer, Monitor } from "../../global-types";
 
 interface CartState {
   [key: string]: Computer[] | Monitor[];

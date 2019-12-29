@@ -1,4 +1,4 @@
-import { Computer, Monitor } from "../../interfaces/types";
+import { Computer, Monitor } from "../../global-types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../store";
 import FetchFacade from "../../rest/FetchFacade";

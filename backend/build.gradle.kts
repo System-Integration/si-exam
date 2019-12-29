@@ -1,10 +1,25 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.*
+import cz.habarta.typescript.generator.JsonLibrary
+import cz.habarta.typescript.generator.TypeScriptFileType
+import cz.habarta.typescript.generator.TypeScriptOutputKind
+import org.jetbrains.kotlin.util.collectionUtils.concat
+
+buildscript {
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+	dependencies {
+		classpath("cz.habarta.typescript-generator", "typescript-generator-gradle-plugin", "2.18.565")
+	}
+}
 
 plugins {
 	id("org.springframework.boot") version "2.1.10.RELEASE"
 	id("io.spring.dependency-management") version "1.0.8.RELEASE"
 	id("com.google.cloud.tools.jib") version "1.8.0"
+	id("cz.habarta.typescript-generator") version "2.17.558"
 	kotlin("jvm") version "1.2.71"
 	kotlin("plugin.spring") version "1.2.71"
 	kotlin("plugin.jpa") version "1.2.71"
@@ -35,20 +50,11 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	/*
-	implementation("org.springframework.boot:spring-boot-starter-amqp")
-	implementation("org.springframework.integration:spring-integration-mqtt:5.2.0.RELEASE")
-	*/
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation(group = "com.google.code.gson", name = "gson", version = "2.7")
-	// https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3
 	implementation(group = "org.eclipse.paho", name = "org.eclipse.paho.client.mqttv3", version = "1.2.2")
-
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	/*
-	testImplementation("org.springframework.amqp:spring-rabbit-test")
-*/
 }
 
 
@@ -56,5 +62,23 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
+	}
+}
+
+tasks {
+	generateTypeScript {
+		jsonLibrary = JsonLibrary.jackson2
+		val module = "com.oliverloenning.backend"
+		val daos = File("${System.getProperty("user.dir")}/src/main/kotlin/com/oliverloenning/backend/daos").walk().map {
+			"$module.daos.${it.absolutePath.split("/").last().dropLast(3)}"
+		}.filterIndexed { index, _ -> index != 0 }.toMutableList()
+		val dtos = File("${System.getProperty("user.dir")}/src/main/kotlin/com/oliverloenning/backend/dtos").walk().map {
+			"$module.dtos.${it.absolutePath.split("/").last().dropLast(3)}"
+		}.filterIndexed { index, _ -> index != 0 }.toMutableList()
+		classes = daos.union(dtos).toMutableList()
+		outputFileType = TypeScriptFileType.implementationFile
+		outputFile = "../frontend/src/global-types.ts"
+		outputKind = TypeScriptOutputKind.module
+
 	}
 }

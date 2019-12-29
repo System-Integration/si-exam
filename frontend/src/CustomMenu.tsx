@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Icon, Badge, Button } from "antd";
+import { Menu, Icon, Badge } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./redux/rootReducer";

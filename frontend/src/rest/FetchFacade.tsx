@@ -1,10 +1,5 @@
 // @ts-ignore
-import {
-  Computer,
-  Monitor,
-  OrderReponse,
-  AjaxResponse
-} from "../interfaces/types";
+import { Computer, Monitor, OrderReponse, AjaxResponse } from "../global-types";
 import { Answers } from "../redux/slices/drawerSlice";
 
 class FetchFacade {
