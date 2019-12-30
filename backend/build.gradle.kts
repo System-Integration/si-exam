@@ -75,7 +75,7 @@ tasks {
 		val dtos = File("${System.getProperty("user.dir")}/src/main/kotlin/com/oliverloenning/backend/dtos").walk().map {
 			"$module.dtos.${it.absolutePath.split("/").last().dropLast(3)}"
 		}.filterIndexed { index, _ -> index != 0 }.toMutableList()
-		classes = daos.union(dtos).toMutableList()
+		classes = daos + dtos
 		outputFileType = TypeScriptFileType.implementationFile
 		outputFile = "../frontend/src/global-types.ts"
 		outputKind = TypeScriptOutputKind.module
