@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-// Generated using typescript-generator version 2.18.565 on 2019-12-29 04:24:04.
+// Generated using typescript-generator version 2.18.565 on 2019-12-30 03:19:11.
 
 export interface Monitor {
     id: number;
