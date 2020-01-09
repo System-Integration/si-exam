@@ -45,8 +45,8 @@ We are using the following patterns:
 [Ingress installed for kubernetes](https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command)
 
 (Install ingress for docker desktop)  
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml  
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud-generic.yaml
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml` 
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud-generic.yaml`
 
 `kubectl create secret generic sidatabase --from-literal SIDATABASE=mysupersecretpassword` to create a encrypted database password for database
 
