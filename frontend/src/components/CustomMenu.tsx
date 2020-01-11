@@ -2,8 +2,8 @@ import React from "react";
 import { Menu, Icon, Badge } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "./redux/rootReducer";
-import { toggleDrawerOn } from "./redux/slices/drawerSlice";
+import { RootState } from "../redux/rootReducer";
+import { toggleDrawerOn } from "../redux/slices/drawerSlice";
 interface Props {}
 
 export const CustomMenu: React.FC<Props> = () => {

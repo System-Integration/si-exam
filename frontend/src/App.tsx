@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "./Routes";
-import { CustomMenu } from "./CustomMenu";
+import { CustomMenu } from "./components/CustomMenu";
 import { fetchItems } from "./redux/slices/itemsSlice";
 import { RootState } from "./redux/rootReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { Spin, Col } from "antd";
 import { PurchaseHistory } from "./components/PurchaseHistory";
 import useConnectToRMQ from "./hooks/useConnectToRMQ";
-import { CustomDrawer } from "./CustomDrawer";
+import { CustomDrawer } from "./components/CustomDrawer";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();

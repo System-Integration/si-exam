@@ -1,9 +1,9 @@
 import React from "react";
 import { Drawer, Button, message, Rate } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "./redux/rootReducer";
-import { toggleDrawerOff, changeAnswer } from "./redux/slices/drawerSlice";
-import FetchFacade from "./rest/FetchFacade";
+import { RootState } from "../redux/rootReducer";
+import { toggleDrawerOff, changeAnswer } from "../redux/slices/drawerSlice";
+import FetchFacade from "../rest/FetchFacade";
 
 interface Props {}
 
