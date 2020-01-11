@@ -1,4 +1,4 @@
-package com.oliverloenning.backend.daos
+package com.oliverloenning.backend.database.daos
 
 import java.util.*
 import javax.persistence.*

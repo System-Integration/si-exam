@@ -1,15 +1,14 @@
-package com.oliverloenning.backend.facades
+package com.oliverloenning.backend.logic
 
-import com.oliverloenning.backend.daos.Computer
-import com.oliverloenning.backend.repositories.ComputerRepository
-import com.oliverloenning.backend.utils.sendSuccess
+import com.oliverloenning.backend.database.daos.Computer
+import com.oliverloenning.backend.database.repositories.ComputerRepository
 import org.springframework.stereotype.Component
 
 @Component
 class ComputerFacade(private val computerRepository: ComputerRepository) {
         fun addComputer(computer: Computer): Computer = computerRepository.save(computer)
 
-        fun deleteComputer(computer: Computer): String = computerRepository.delete(computer).sendSuccess()
+        fun deleteComputer(computer: Computer): Unit = computerRepository.delete(computer)
 
         fun findComputer(id: Long): Computer = computerRepository.findById(id).get()
 

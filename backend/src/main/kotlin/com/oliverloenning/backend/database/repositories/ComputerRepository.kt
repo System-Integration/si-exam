@@ -1,6 +1,6 @@
-package com.oliverloenning.backend.repositories
+package com.oliverloenning.backend.database.repositories
 
-import com.oliverloenning.backend.daos.Computer
+import com.oliverloenning.backend.database.daos.Computer
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ComputerRepository : JpaRepository<Computer, Long> {

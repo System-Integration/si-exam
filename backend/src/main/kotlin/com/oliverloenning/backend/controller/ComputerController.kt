@@ -1,9 +1,8 @@
 package com.oliverloenning.backend.controller
 
-import com.oliverloenning.backend.daos.Computer
-import com.oliverloenning.backend.daos.Monitor
-import com.oliverloenning.backend.facades.ComputerFacade
-import com.oliverloenning.backend.facades.MonitorFacade
+import com.oliverloenning.backend.database.daos.Computer
+import com.oliverloenning.backend.logic.ComputerFacade
+import com.oliverloenning.backend.logic.MonitorFacade
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 

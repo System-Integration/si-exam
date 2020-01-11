@@ -1,10 +1,11 @@
-package com.oliverloenning.backend.tools
+package com.oliverloenning.backend
 
+import com.oliverloenning.backend.dto.AjaxResponse
 import org.eclipse.paho.client.mqttv3.MqttClient
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.springframework.context.ApplicationContext
 
-val publish: (ApplicationContext, String) -> Unit = {context: ApplicationContext, payload: String ->
+val publish: (ApplicationContext, String) -> Unit = { context: ApplicationContext, payload: String ->
     run {
         val message = MqttMessage()
         message.payload = payload.toByteArray()
@@ -16,3 +17,5 @@ val publish: (ApplicationContext, String) -> Unit = {context: ApplicationContext
         customMqttClient.publish("history", message)
     }
 }
+
+fun Any.sendResponse(status: Boolean, message: String): AjaxResponse = AjaxResponse(status, message)
