@@ -20,7 +20,7 @@ const App: React.FC = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  const messages = useConnectToRMQ();
+  useConnectToRMQ();
 
   return (
     <React.Fragment>

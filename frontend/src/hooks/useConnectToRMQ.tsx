@@ -2,7 +2,7 @@ import { connect } from "mqtt";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addMessage } from "../redux/slices/messagesSlice";
-export default (): string[] => {
+export default () => {
   const dispatch = useDispatch();
   const [purchaseHistory, setPurchaseHistory] = useState<string[]>([]);
 
@@ -30,6 +30,4 @@ export default (): string[] => {
       client.end();
     };
   });
-
-  return purchaseHistory;
 };
