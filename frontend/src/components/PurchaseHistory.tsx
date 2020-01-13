@@ -1,11 +1,10 @@
 import React from "react";
 import { List, Typography } from "antd";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/rootReducer";
 
-interface Props {
-  messages: string[];
-}
-
-export const PurchaseHistory: React.FC<Props> = ({ messages }) => {
+export const PurchaseHistory: React.FC = () => {
+  const messages = useSelector((state: RootState) => state.messages);
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}

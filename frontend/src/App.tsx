@@ -37,7 +37,7 @@ const App: React.FC = () => {
               <CustomDrawer />
             </Col>
             <Col span={8}>
-              <PurchaseHistory messages={messages} />
+              <PurchaseHistory />
             </Col>
           </React.Fragment>
         </BrowserRouter>

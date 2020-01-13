@@ -1,6 +1,9 @@
 import { connect } from "mqtt";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addMessage } from "../redux/slices/messagesSlice";
 export default (): string[] => {
+  const dispatch = useDispatch();
   const [purchaseHistory, setPurchaseHistory] = useState<string[]>([]);
 
   const client = connect("/mom-socket/ws", {
@@ -19,7 +22,8 @@ export default (): string[] => {
         purchaseHistory.filter(message => message === purchaseMessage)
           .length === 0
       )
-        setPurchaseHistory(old => [...old, purchaseMessage]);
+        dispatch(addMessage(purchaseMessage));
+      setPurchaseHistory(old => [...old, purchaseMessage]);
     });
 
     return () => {
