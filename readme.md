@@ -20,11 +20,11 @@ We have many different parts of the system:
 
 ##  3️⃣ Integration patterns
 We are using the following patterns:
-- Aggretation
-- Dynamic Router
-- Message Broker
-- Event-Driven Consumer
+- Message
 - Message Channel
+- Point-To-Point Channel
+- Event-Driven Consumer
+- Message Endpoint
 
 ## 4️⃣Illustrations
 
