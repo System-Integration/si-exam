@@ -8,4 +8,6 @@ import org.springframework.stereotype.Component
 class FeedbackFacade(private val feedbackRepository: FeedbackRepository) {
 
     fun saveFeedbackToDatabase(feedback: Feedback) = feedbackRepository.save(feedback)
+
+    fun getAllFeedbacks(): List<Feedback> = feedbackRepository.findAll()
 }

@@ -16,7 +16,7 @@ class FetchFacade {
     }).then(res => res.json());
 
   postFeedback = (answers: Answers): Promise<AjaxResponse> =>
-    fetch("/api/feedback", {
+    fetch("/api/feedbacks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
